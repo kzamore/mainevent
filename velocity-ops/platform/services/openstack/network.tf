@@ -34,14 +34,14 @@ resource "openstack_networking_subnet_v2" "public_subnet_1" {
 resource "openstack_networking_subnet_v2" "internal_subnet_1" {
   name       = "internal_subnet_1"
   network_id = openstack_networking_network_v2.internal_shared.id
-  cidr       = var.int_subnet_cidr
-  gateway_ip = var.int_subnet_gateway
+  cidr       = var.shared_subnet_cidr
+  gateway_ip = var.shared_subnet_gateway
   ip_version = 4
   enable_dhcp = "true"
   dns_nameservers = ["8.8.8.8"]
-  allocation_pool {    
-	start = var.int_subnet_start_ip
-	end = var.int_subnet_end_ip
+  allocation_pool {   
+	start = var.shared_subnet_start_ip
+	end = var.shared_subnet_end_ip
   } 
   tenant_id	 = openstack_identity_project_v3.core.id
 }
