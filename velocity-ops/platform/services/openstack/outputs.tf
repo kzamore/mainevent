@@ -1,6 +1,12 @@
 output "core_project_id" {
    value = openstack_identity_project_v3.core.id
 }
+output "shellkey" {
+  value = openstack_compute_keypair_v2.shellkey.name
+}
+output "image_ubuntu2004_id" {
+  value = openstack_images_image_v2.ubuntu2004.id
+}
 output "image_ubuntu1804_id" {
   value = openstack_images_image_v2.ubuntu1804.id
 }
@@ -30,5 +36,8 @@ output "flavor_us2_3xlarge_id" {
 }
 output "flavor_us2_4xwtf_id" {
   value = openstack_compute_flavor_v2.us2_4xwtf.id
+}
+output "network_shared_name" {
+ value = openstack_networking_network_v2.internal_shared.name
 }
 
