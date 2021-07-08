@@ -1,3 +1,6 @@
+variable "cloudkey_value" {
+  type = string
+}
 variable "openstack_password" {
   type = string
 }

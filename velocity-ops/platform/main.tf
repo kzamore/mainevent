@@ -10,13 +10,14 @@ module "openstack" {
 	shared_subnet_end_ip = var.shared_subnet_end_ip
 	openstack_password = var.openstack_password
 	openstack_host = var.openstack_host
+        cloudkey_value = var.cloudkey_value
 }
 
 resource "openstack_compute_instance_v2" "rundeck" {
   name            = "rundeck.nodelogic.net"
   image_id        = module.openstack.image_ubuntu2004_id
   flavor_id       = module.openstack.flavor_us2_large_id
-  key_pair        = module.openstack.shellkey
+  key_pair        = module.openstack.cloudkey
   security_groups = ["default", "rundeck","ssh"]
 
   network {

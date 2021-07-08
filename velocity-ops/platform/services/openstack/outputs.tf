@@ -1,8 +1,8 @@
 output "core_project_id" {
    value = openstack_identity_project_v3.core.id
 }
-output "shellkey" {
-  value = openstack_compute_keypair_v2.shellkey.name
+output "cloudkey" {
+  value = openstack_compute_keypair_v2.cloudkey.name
 }
 output "image_ubuntu2004_id" {
   value = openstack_images_image_v2.ubuntu2004.id

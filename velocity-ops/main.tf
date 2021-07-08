@@ -10,5 +10,6 @@ module "platform" {
 	shared_subnet_gateway = var.shared_subnet_gateway
 	shared_subnet_start_ip = var.shared_subnet_start_ip
 	shared_subnet_end_ip = var.shared_subnet_end_ip
+	cloudkey_value = var.cloudkey_value
 }
 
