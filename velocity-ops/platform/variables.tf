@@ -2,6 +2,9 @@ variable "openstack_project" {
   type = string
   default = "admin"
 }
+variable "cloudkey_value" {
+  type = string
+}
 variable "openstack_host" {
   type = string
 }
