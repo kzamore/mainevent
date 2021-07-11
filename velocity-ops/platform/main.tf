@@ -14,7 +14,7 @@ module "openstack" {
 }
 
 resource "openstack_networking_floatingip_v2" "public_ip" {
-  pool = "igw-wan"
+  pool = "igw_wan"
 }
 
 resource "openstack_compute_instance_v2" "rundeck" {
