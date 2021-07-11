@@ -22,7 +22,7 @@ resource "openstack_compute_instance_v2" "rundeck" {
   image_id        = module.openstack.image_ubuntu2004_id
   flavor_id       = module.openstack.flavor_us2_large_id
   key_pair        = module.openstack.cloudkey
-  security_groups = ["default", "rundeck","ssh"]
+  security_groups = ["default", "www","ssh"]
 
   network {
     name = module.openstack.network_shared_name
