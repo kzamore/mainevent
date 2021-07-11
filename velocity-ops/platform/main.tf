@@ -13,6 +13,10 @@ module "openstack" {
         cloudkey_value = var.cloudkey_value
 }
 
+resource "openstack_networking_floatingip_v2" "public_ip" {
+  pool = "igw-wan"
+}
+
 resource "openstack_compute_instance_v2" "rundeck" {
   name            = "rundeck.nodelogic.net"
   image_id        = module.openstack.image_ubuntu2004_id
@@ -25,4 +29,7 @@ resource "openstack_compute_instance_v2" "rundeck" {
   }
 }
 
-
+resource "openstack_compute_floatingip_associate_v2" "public_ip" {
+  floating_ip = "${openstack_networking_floatingip_v2.public_ip.address}"
+  instance_id = "${openstack_compute_instance_v2.rundeck.id}"
+}
