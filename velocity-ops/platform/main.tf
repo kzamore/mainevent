@@ -25,10 +25,7 @@ resource "openstack_compute_instance_v2" "vlb" {
   security_groups = ["default", "www","ssh"]
 
   metadata = {
-    lb_hosts = join(", ", [
-				"${openstack_compute_instance_v2.rundeck.access_ip_v4}",
-				"${openstack_compute_instance_v2.idm.access_ip_v4}"
-			])
+    lb_hosts = "rundeck:${openstack_compute_instance_v2.rundeck.access_ip_v4},git:${openstack_compute_instance_v2.idm.access_ip_v4}"
   }
   network {
     name = module.openstack.network_shared_name
