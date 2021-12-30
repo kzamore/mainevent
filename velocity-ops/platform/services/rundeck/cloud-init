@@ -1,0 +1,6 @@
+#!/bin/bash
+
+apt update
+apt upgrade -y
+apt install -y docker.io
+docker run --name rundeck -p 4440:4440 rundeck/rundeck

@@ -44,7 +44,7 @@ resource "openstack_networking_secgroup_rule_v2" "ldap_rule" {
   protocol          = "tcp"
   port_range_min    = 636
   port_range_max    = 636
-  remote_group_id = openstack_networking_secgroup_v2.ldap.id
+  remote_ip_prefix  = "0.0.0.0/0"
   security_group_id = openstack_networking_secgroup_v2.ldap.id
   tenant_id   = openstack_identity_project_v3.core.id
 }
@@ -114,7 +114,7 @@ resource "openstack_networking_secgroup_rule_v2" "rundeck_rule_4440" {
   protocol          = "tcp"
   port_range_min    = 4440
   port_range_max    = 4440
-  remote_group_id = openstack_networking_secgroup_v2.rundeck.id
+  remote_ip_prefix  = "0.0.0.0/0"
   security_group_id = openstack_networking_secgroup_v2.rundeck.id
   tenant_id   = openstack_identity_project_v3.core.id
 }

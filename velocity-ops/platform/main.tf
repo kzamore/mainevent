@@ -17,19 +17,48 @@ resource "openstack_networking_floatingip_v2" "public_ip" {
   pool = "igw_wan"
 }
 
-resource "openstack_compute_instance_v2" "rundeck" {
-  name            = "rundeck.nodelogic.net"
+resource "openstack_compute_instance_v2" "vlb" {
+  name            = "vlb"
+  image_id        = module.openstack.image_ubuntu2004_id
+  flavor_id       = module.openstack.flavor_us2_small_id
+  key_pair        = module.openstack.cloudkey
+  security_groups = ["default", "www","ssh"]
+
+  metadata = {
+    lb_hosts = "rundeck,www:${openstack_compute_instance_v2.rundeck.access_ip_v4},4440 idm,www:${openstack_compute_instance_v2.idm.access_ip_v4},80"
+  }
+  network {
+    name = module.openstack.network_shared_name
+  }
+  user_data = "${file("platform/services/vlb/cloud-init")}"
+}
+
+resource "openstack_compute_instance_v2" "idm" {
+  name            = "idm"
   image_id        = module.openstack.image_ubuntu2004_id
   flavor_id       = module.openstack.flavor_us2_large_id
   key_pair        = module.openstack.cloudkey
-  security_groups = ["default", "rundeck","ssh"]
+  security_groups = ["default", "www","ssh"]
 
   network {
     name = module.openstack.network_shared_name
   }
 }
 
+resource "openstack_compute_instance_v2" "rundeck" {
+  name            = "rundeck"
+  image_id        = module.openstack.image_ubuntu2004_id
+  flavor_id       = module.openstack.flavor_us2_large_id
+  key_pair        = module.openstack.cloudkey
+  security_groups = ["default", "ssh","rundeck"]
+
+  network {
+    name = module.openstack.network_shared_name
+  }
+  user_data = "${file("platform/services/rundeck/cloud-init")}"
+}
+
 resource "openstack_compute_floatingip_associate_v2" "public_ip" {
   floating_ip = "${openstack_networking_floatingip_v2.public_ip.address}"
-  instance_id = "${openstack_compute_instance_v2.rundeck.id}"
+  instance_id = "${openstack_compute_instance_v2.vlb.id}"
 }
