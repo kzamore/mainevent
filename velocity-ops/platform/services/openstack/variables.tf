@@ -7,6 +7,14 @@ variable "openstack_password" {
 variable "openstack_host" {
   type = string
 }
+variable "centos9_image_url" {
+  type = string
+  default = "https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-20220919.0.x86_64.qcow2"
+}
+variable "centos8_image_url" {
+  type = string
+  default = "https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-GenericCloud-8-20220913.0.x86_64.qcow2"
+}
 variable "centos_image_url" {
   type = string
   default = "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2"
