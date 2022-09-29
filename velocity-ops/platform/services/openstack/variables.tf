@@ -11,6 +11,10 @@ variable "centos_image_url" {
   type = string
   default = "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2"
 }
+variable "ubuntu2204_image_url" {
+  type = string
+  default = "https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-server-cloudimg-amd64.img"
+}
 variable "ubuntu2004_image_url" {
   type = string
   default = "https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img"
