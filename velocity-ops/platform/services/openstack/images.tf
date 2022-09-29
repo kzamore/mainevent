@@ -5,6 +5,13 @@ resource "openstack_images_image_v2" "centos7" {
   disk_format      = "qcow2"
   visibility	   = "public"
 }
+resource "openstack_images_image_v2" "ubuntu2204" {
+  name             = "Ubuntu 22.04 LTS"
+  image_source_url = var.ubuntu2204_image_url
+  container_format = "bare"
+  disk_format      = "raw"
+  visibility	   = "public"
+}
 resource "openstack_images_image_v2" "ubuntu2004" {
   name             = "Ubuntu 20.04 LTS"
   image_source_url = var.ubuntu2004_image_url
