@@ -15,10 +15,10 @@ data "openstack_identity_user_v3" "admin" {
 
 resource "openstack_identity_user_v3" "tyrone" {
   default_project_id = module.openstack.core_project_id
-  name               = "tyrone"
+  name               = var.core_user_name
   description        = "A user"
 
-  password = "tyroneking99"
+  password = var.core_user_password
 
   ignore_change_password_upon_first_use = true
 }

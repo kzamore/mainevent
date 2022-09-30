@@ -1,12 +1,8 @@
-variable "centos_image_url" {
-  type = string
-  default = "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2"
-}
-variable "ubuntu2004_image_url" {
+variable "opnsense_image_url" {
   type = string
   default = "https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img"
 }
-variable "ubuntu1804_image_url" {
+variable "pfsense_image_url" {
   type = string
   default = "https://cloud-images.ubuntu.com/releases/bionic/release/ubuntu-18.04-server-cloudimg-amd64.img"
 }

@@ -64,3 +64,20 @@ variable "int_subnet_end_ip" {
   type = string
   default = "172.20.0.150"
 }
+variable "namecheap_user" {
+  type = string
+}
+variable "namecheap_token" {
+  type = string
+}
+variable "namecheap_ip" {
+  type = string
+}
+variable "core_user_name" {
+  type = string
+  default = "tyrone"
+}
+variable "core_user_password" {
+  type = string
+  default = "tyroneking99"
+}

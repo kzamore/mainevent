@@ -1,11 +1,11 @@
 output "core_project_id" {
    value = openstack_identity_project_v3.core.id
 }
-output "image_ubuntu1804_id" {
-  value = openstack_images_image_v2.ubuntu1804.id
+output "image_opnsense_id" {
+  value = openstack_images_image_v2.opnsense.id
 }
-output "image_centos7_id" {
-  value = openstack_images_image_v2.centos7.id
+output "image_pfsense_id" {
+  value = openstack_images_image_v2.pfsense.id
 }
 output "flavor_us2_xsmall_id" {
   value = openstack_compute_flavor_v2.us2_xsmall.id

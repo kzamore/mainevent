@@ -30,8 +30,3 @@ resource "openstack_networking_router_v2" "igw_router_lan" {
   external_network_id = openstack_networking_network_v2.igw_lan.id
   tenant_id	 = module.openstack.core_project_id
 }
-
-#resource "openstack_networking_router_interface_v2" "lan_subnet_1_router_interface" {
-#  router_id = openstack_networking_router_v2.igw_router_lan.id
-#  subnet_id = data.openstack_networking_subnet_v2.internal_subnet_1.id
-#}

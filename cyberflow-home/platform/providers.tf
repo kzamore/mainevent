@@ -6,11 +6,11 @@ provider "openstack" {
   region      = "RegionOne"
 }
 
-#provider "namecheap" {
-# username = "aaccell"
-#  api_user = "aaccell" # Same as username
-#  token = "e7479d38639e439ca48aefb97cd55f47"
-#  ip = "76.30.101.145"
-#  use_sandbox = false #
-#}
+provider "namecheap" {
+ username = var.namecheap_user
+  api_user = var.namecheap_user
+  token = var.namecheap_token
+  ip = var.namecheap_ip
+  use_sandbox = false #
+}
 
